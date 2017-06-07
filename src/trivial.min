@@ -8,6 +8,7 @@ t : array[20] of integer;
 endlocals
  
 beginbody
+j:=12;
 k := j;
 write i, j, k;
 endbody

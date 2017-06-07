@@ -3,6 +3,7 @@ func main
 . i
 . j
 . k
+= j,
 = k,j
 .> i
 .> j

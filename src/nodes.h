@@ -114,7 +114,8 @@ public:
     // check to see that it has been declared
     place = c1->place;    // Var
   }
-  Expression( int c1 ) {}   // NUMBER 
+    Expression( int c1 ) {
+  }   // NUMBER
   Expression( int c1, Expression* c2, int c3 ) {} // '(" Expression ')'
   Expression( string* c1, int c2, Expressions* c3, int c4 ) {} 
   Expression( Expression* c1, int c2, Expression* c3 ) {}
@@ -136,7 +137,15 @@ public:
 
   Declaration( list<string*>* c1, int c2, int c3, int c4, int c5, int c6,
 	       int c7, int c8 )
-  { }
+  {
+      for( auto it : *c1 ) {
+          // install *it into var table unless it causes a collision
+          // var table contains both scalars and arrays.
+          // should construct a Var and add it to the symbol table.
+          vartab[*it] = new Var( it );
+          code += ( ".[] " + *it + "," + c5 + "\n" );
+      }
+  }
 
 };
 
